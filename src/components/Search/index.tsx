@@ -40,7 +40,6 @@ const Search = (props: GeocoderControlProps) => {
         if (location && props.marker) {
           setMarker(
             <Marker
-              //   {...props.marker}
               longitude={location[0]}
               latitude={location[1]}
             />
