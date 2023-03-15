@@ -1,10 +1,13 @@
 import Layout from "../../components/Layout";
-import MapComp from "../../components/Map";
+import MapPoint from "./MapPoint";
+import MapPolygon from "./MapPolygon";
 
 const ActiveLayer = () => {
+  const path = window.location.pathname;
+
   return (
     <Layout>
-      <MapComp />
+      {path === "/active-layer/point" ? <MapPoint /> : <MapPolygon />}
     </Layout>
   );
 };

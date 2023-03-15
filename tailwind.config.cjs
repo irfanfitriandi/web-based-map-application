@@ -7,6 +7,9 @@ module.exports = {
         primary: "#324E9A",
         accent: "#F0F4FF",
       },
+      scale: {
+        "-100": "-1",
+      },
     },
   },
   plugins: [],

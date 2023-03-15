@@ -1,5 +1,9 @@
 import { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 const MainPage = lazy(() => import("../pages/Main"));
 const ActiveLayerPage = lazy(() => import("../pages/ActiveLayer"));
@@ -17,6 +21,14 @@ const App = () => {
     },
     {
       path: "/active-layer",
+      element: <Navigate to="/active-layer/point" />,
+    },
+    {
+      path: "/active-layer/point",
+      element: <ActiveLayerPage />,
+    },
+    {
+      path: "/active-layer/polygon",
       element: <ActiveLayerPage />,
     },
   ]);

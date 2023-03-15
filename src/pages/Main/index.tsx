@@ -1,10 +1,10 @@
 import Layout from "../../components/Layout";
-import Map from "../../components/Map";
+import MapPlain from "./MapPlain";
 
 const Main = () => {
   return (
     <Layout>
-      <Map />
+      <MapPlain />
     </Layout>
   );
 };
