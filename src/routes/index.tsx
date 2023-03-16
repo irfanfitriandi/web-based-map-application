@@ -19,10 +19,6 @@ function App() {
       element: <MainPage />,
     },
     {
-      path: "/active-layer",
-      element: <Navigate to="/active-layer/point" />,
-    },
-    {
       path: "/active-layer/point",
       element: <MainPage />,
     },

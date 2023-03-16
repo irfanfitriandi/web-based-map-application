@@ -10,7 +10,7 @@ import LayerPlusIcon from "../Icons/LayerPlusIcon";
 import BinIcon from "../Icons/BinIcon";
 
 function Sidebar() {
-  const [miniSidebar, setMiniSidebar] = useState(false);
+  const [miniSidebar, setMiniSidebar] = useState(true);
   const [menuSidebar, setMenuSidebar] = useState(false);
   const path = window.location.pathname;
 
@@ -32,6 +32,7 @@ function Sidebar() {
               path === "/" && "bg-white/30"
             }`}
             to="/"
+            onClick={() => setMenuSidebar(true)}
           >
             <LayerIcon className="w-4" />
             {miniSidebar ? " " : "Layer List"}
@@ -44,7 +45,8 @@ function Sidebar() {
                 ? "bg-white/30"
                 : ""
             }`}
-            to="/active-layer"
+            to="/active-layer/point"
+            onClick={() => setMenuSidebar(true)}
           >
             <MapIcon className="w-4" />
             {miniSidebar ? " " : "Active Layer"}
