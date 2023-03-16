@@ -9,13 +9,13 @@ import {
   Popup,
 } from "react-map-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import Search from "../../../components/Search";
+import Search from "components/Search";
 
-import PointData from "../../../assets/data/marker.geojson.json";
-import { PointType } from "../../../shared/types/PointType";
+import PointData from "assets/data/marker.geojson.json";
+import { PointType } from "shared/types/PointType";
 import { getMarker } from "./utils";
 
-const MapPoint = () => {
+function MapPoint() {
   const [point, setPoint] = useState<PointType>({});
   const [popup, setPopup] = useState<any>(null);
   const data: any = { PointData };
@@ -32,8 +32,8 @@ const MapPoint = () => {
           .toLowerCase()
           .includes(query.toLowerCase())
       ) {
-        feature["place_name"] = `📍 ${feature.properties.project_id}`;
-        feature["center"] = feature.geometry.coordinates;
+        feature.place_name = `📍 ${feature.properties.project_id}`;
+        feature.center = feature.geometry.coordinates;
         matchingFeatures.push(feature);
       }
     }
@@ -63,7 +63,7 @@ const MapPoint = () => {
         {point.features?.map((data, idx) => {
           const lng = data.geometry?.coordinates[0];
           const lat = data.geometry?.coordinates[1];
-          const status: any = data.properties.status;
+          const { status } = data.properties;
           const marker = getMarker(status);
 
           return (
@@ -103,6 +103,6 @@ const MapPoint = () => {
       </Map>
     </div>
   );
-};
+}
 
 export default MapPoint;

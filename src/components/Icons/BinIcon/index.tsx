@@ -1,6 +1,6 @@
 import { IconProps } from "../IconsProps";
 
-const BinIcon = ({ ...props }: IconProps) => {
+function BinIcon({ ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 14 18"
@@ -14,6 +14,6 @@ const BinIcon = ({ ...props }: IconProps) => {
       />
     </svg>
   );
-};
+}
 
 export default BinIcon;

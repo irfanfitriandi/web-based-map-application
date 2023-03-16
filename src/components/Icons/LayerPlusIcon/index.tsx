@@ -1,6 +1,6 @@
 import { IconProps } from "../IconsProps";
 
-const LayerPlusIcon = ({ ...props }: IconProps) => {
+function LayerPlusIcon({ ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 20 19"
@@ -14,6 +14,6 @@ const LayerPlusIcon = ({ ...props }: IconProps) => {
       />
     </svg>
   );
-};
+}
 
 export default LayerPlusIcon;

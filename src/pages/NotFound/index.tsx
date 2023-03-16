@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import NotFoundImg from "../../assets/notfound.jpg";
 
-const NotFound = () => {
+function NotFound() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-y-4">
       <img alt="NotFoundPage" src={NotFoundImg} width={320} />
@@ -16,6 +16,6 @@ const NotFound = () => {
       </div>
     </div>
   );
-};
+}
 
 export default NotFound;

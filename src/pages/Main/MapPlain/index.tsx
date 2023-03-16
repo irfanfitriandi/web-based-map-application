@@ -1,9 +1,9 @@
 import maplibregl from "maplibre-gl";
 import { Map, NavigationControl, Source, Layer, FillLayer } from "react-map-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import Search from "../../../components/Search";
+import Search from "components/Search";
 
-const MapPlain = () => {
+function MapPlain() {
   return (
     <div className="flex justify-end">
       <Map
@@ -32,6 +32,6 @@ const MapPlain = () => {
       </Map>
     </div>
   );
-};
+}
 
 export default MapPlain;

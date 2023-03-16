@@ -17,7 +17,7 @@ type GeocoderControlProps = Omit<
   onError?: any;
 };
 
-const Search = (props: GeocoderControlProps) => {
+function Search(props: GeocoderControlProps) {
   const [marker, setMarker] = useState<any>();
 
   const geocoder = useControl<MapboxGeocoder>(
@@ -38,12 +38,7 @@ const Search = (props: GeocoderControlProps) => {
           (result.center ||
             (result.geometry?.type === "Point" && result.geometry.coordinates));
         if (location && props.marker) {
-          setMarker(
-            <Marker
-              longitude={location[0]}
-              latitude={location[1]}
-            />
-          );
+          setMarker(<Marker longitude={location[0]} latitude={location[1]} />);
         } else {
           setMarker(null);
         }
@@ -113,7 +108,7 @@ const Search = (props: GeocoderControlProps) => {
     }
   }
   return marker;
-};
+}
 
 export default Search;
 

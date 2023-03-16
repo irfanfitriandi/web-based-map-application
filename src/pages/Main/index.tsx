@@ -1,12 +1,22 @@
-import Layout from "../../components/Layout";
+import Layout from "components/Layout";
 import MapPlain from "./MapPlain";
+import MapPoint from "./MapPoint";
+import MapPolygon from "./MapPolygon";
 
-const Main = () => {
+function Main() {
+  const path = window.location.pathname;
+
   return (
     <Layout>
-      <MapPlain />
+      {path === "/" ? (
+        <MapPlain />
+      ) : path === "/active-layer/point" ? (
+        <MapPoint />
+      ) : (
+        <MapPolygon />
+      )}
     </Layout>
   );
-};
+}
 
 export default Main;

@@ -1,7 +1,7 @@
-import { PointStatus } from "../../../shared/types/PointType";
-import MarkerGreen from "../../../assets/marker-green.png";
-import MarkerYellow from "../../../assets/marker-yellow.png";
-import MarkerRed from "../../../assets/marker-red.png";
+import { PointStatus } from "shared/types/PointType";
+import MarkerGreen from "assets/marker-green.png";
+import MarkerYellow from "assets/marker-yellow.png";
+import MarkerRed from "assets/marker-red.png";
 
 export const getMarker = (status: PointStatus) => {
   switch (status) {

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-import Logo from "../../assets/logo.svg";
+import Logo from "assets/logo.svg";
 import ArrowIcon from "../Icons/ArrowIcon";
 import LayerIcon from "../Icons/LayerIcon";
 import MapIcon from "../Icons/MapIcon";
@@ -9,7 +9,7 @@ import ButtonIcon from "../Icons/ButtonIcon";
 import LayerPlusIcon from "../Icons/LayerPlusIcon";
 import BinIcon from "../Icons/BinIcon";
 
-const Sidebar = () => {
+function Sidebar() {
   const [miniSidebar, setMiniSidebar] = useState(false);
   const [menuSidebar, setMenuSidebar] = useState(false);
   const path = window.location.pathname;
@@ -22,7 +22,7 @@ const Sidebar = () => {
         } w-28 h-screen py-5 ease-in-out duration-300 z-50`}
       >
         <div className="flex flex-col text-white">
-          <Link to={`/`}>
+          <Link to="/">
             <img className="w-20 mx-auto mb-8" src={Logo} alt="logo" />
           </Link>
           <Link
@@ -31,7 +31,7 @@ const Sidebar = () => {
             } gap-6 text-sm p-4 ease-in-out duration-300 hover:bg-white/10 ${
               path === "/" && "bg-white/30"
             }`}
-            to={`/`}
+            to="/"
           >
             <LayerIcon className="w-4" />
             {miniSidebar ? " " : "Layer List"}
@@ -44,7 +44,7 @@ const Sidebar = () => {
                 ? "bg-white/30"
                 : ""
             }`}
-            to={`/active-layer`}
+            to="/active-layer"
           >
             <MapIcon className="w-4" />
             {miniSidebar ? " " : "Active Layer"}
@@ -64,7 +64,7 @@ const Sidebar = () => {
         }`}
       >
         <Link
-          to={`/active-layer/point`}
+          to="/active-layer/point"
           className="flex justify-between items-center w-full bg-white rounded-md p-2 shadow-sm"
         >
           Point
@@ -76,7 +76,7 @@ const Sidebar = () => {
           )}
         </Link>
         <Link
-          to={`/active-layer/polygon`}
+          to="/active-layer/polygon"
           className="flex justify-between items-center w-full bg-white rounded-md p-2 shadow-sm"
         >
           Polygon
@@ -100,6 +100,6 @@ const Sidebar = () => {
       />
     </div>
   );
-};
+}
 
 export default Sidebar;

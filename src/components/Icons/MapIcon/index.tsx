@@ -1,6 +1,6 @@
 import { IconProps } from "../IconsProps";
 
-const MapIcon = ({ ...props }: IconProps) => {
+function MapIcon({ ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 20 20"
@@ -14,6 +14,6 @@ const MapIcon = ({ ...props }: IconProps) => {
       />
     </svg>
   );
-};
+}
 
 export default MapIcon;

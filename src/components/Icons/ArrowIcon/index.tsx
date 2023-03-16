@@ -1,6 +1,6 @@
 import { IconProps } from "../IconsProps";
 
-const ArrowIcon = ({ ...props }: IconProps) => {
+function ArrowIcon({ ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 30 30"
@@ -15,6 +15,6 @@ const ArrowIcon = ({ ...props }: IconProps) => {
       />
     </svg>
   );
-};
+}
 
 export default ArrowIcon;

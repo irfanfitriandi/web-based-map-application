@@ -1,6 +1,6 @@
 import { IconProps } from "../IconsProps";
 
-const ButtonIcon = ({ ...props }: IconProps) => {
+function ButtonIcon({ ...props }: IconProps) {
   return (
     <svg
       viewBox="0 0 38 38"
@@ -54,6 +54,6 @@ const ButtonIcon = ({ ...props }: IconProps) => {
       </defs>
     </svg>
   );
-};
+}
 
 export default ButtonIcon;
