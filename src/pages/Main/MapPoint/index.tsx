@@ -12,27 +12,26 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import Search from "components/Search";
 
 import PointData from "assets/data/marker.geojson.json";
-import { PointType } from "shared/types/PointType";
+import { PointFeaturesType, PointType } from "shared/types/PointType";
 import { getMarker } from "./utils";
 
 function MapPoint() {
-  const [point, setPoint] = useState<PointType>({});
+  const [point, setPoint] = useState<PointType | any>({});
   const [popup, setPopup] = useState<any>(null);
-  const data: any = { PointData };
 
   useEffect(() => {
-    setPoint(data.PointData);
+    setPoint(PointData);
   }, []);
 
-  const localSearch = (query: any) => {
+  const localSearch = (query: string) => {
     const matchingFeatures = [];
-    for (const feature of data.PointData.features) {
+    for (const feature of point) {
       if (
         feature.properties.project_id
           .toLowerCase()
           .includes(query.toLowerCase())
       ) {
-        feature.place_name = `📍 ${feature.properties.project_id}`;
+        feature.place_name = `${feature.properties.project_id}`;
         feature.center = feature.geometry.coordinates;
         matchingFeatures.push(feature);
       }
@@ -60,7 +59,7 @@ function MapPoint() {
           import.meta.env.VITE_API_MAPTILER
         }`}
       >
-        {point.features?.map((data, idx) => {
+        {point.features?.map((data: PointFeaturesType, idx: number) => {
           const lng = data.geometry?.coordinates[0];
           const lat = data.geometry?.coordinates[1];
           const { status } = data.properties;
@@ -97,6 +96,7 @@ function MapPoint() {
           mapboxAccessToken={import.meta.env.VITE_API_MAPBOX}
           position="top-right"
           localGeocoder={localSearch}
+          localGeocoderOnly={true}
         />
         <NavigationControl position="bottom-right" />
         <GeolocateControl position="bottom-right" />

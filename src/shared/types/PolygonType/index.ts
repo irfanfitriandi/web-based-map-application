@@ -16,3 +16,17 @@ export interface PolygonType {
   }[];
   type?: string;
 }
+
+export interface HoverPolyType {
+  feature?: {
+    properties: {
+      ID?: number;
+      kode?: number;
+      Propinsi?: string;
+      SUMBER?: string;
+      users?: number;
+    };
+  };
+  x?: number;
+  y?: number;
+}

@@ -13,7 +13,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import Search from "components/Search";
 
 import PolygonData from "assets/data/polygon.geojson.json";
-import { PolygonType } from "shared/types/PolygonType";
+import { HoverPolyType, PolygonType } from "shared/types/PolygonType";
 
 const layerStyle: FillLayer = {
   id: "data",
@@ -36,12 +36,11 @@ const layerStyle: FillLayer = {
 };
 
 function MapPolygon() {
-  const [polygon, setPolygon] = useState<PolygonType>({});
-  const [hoverInfo, setHoverInfo] = useState<any>(null);
-  const data: any = { PolygonData };
+  const [polygon, setPolygon] = useState<PolygonType | any>();
+  const [hoverInfo, setHoverInfo] = useState<HoverPolyType>({});
 
   useEffect(() => {
-    setPolygon(data.PolygonData);
+    setPolygon(PolygonData);
   }, []);
 
   const onHover = useCallback((e: any) => {
@@ -54,14 +53,14 @@ function MapPolygon() {
     setHoverInfo(hoveredFeature && { feature: hoveredFeature, x, y });
   }, []);
 
-  const localSearch = (query: any) => {
+  const localSearch = (query: string) => {
     const matchingFeatures = [];
-    for (const feature of data.PolygonData.features) {
+    for (const feature of polygon.features) {
       if (
         feature.properties.Propinsi.toLowerCase().includes(query.toLowerCase())
       ) {
-        feature.place_name = `📍 ${feature.properties.Propinsi}`;
-        feature.center = feature.geometry.coordinates;
+        feature.place_name = `${feature.properties.Propinsi}`;
+        feature.center = feature.geometry.coordinates[0];
         matchingFeatures.push(feature);
       }
     }
@@ -89,7 +88,7 @@ function MapPolygon() {
       interactiveLayerIds={["data"]}
       onMouseMove={onHover}
     >
-      <Source id="data" type="geojson" data={data.PolygonData}>
+      <Source id="data" type="geojson" data={polygon}>
         <Layer {...layerStyle} />
       </Source>
       <Search
@@ -97,6 +96,7 @@ function MapPolygon() {
         position="top-right"
         placeholder="Search on map"
         localGeocoder={localSearch}
+        localGeocoderOnly={true}
       />
       <NavigationControl position="bottom-right" />
       <GeolocateControl position="bottom-right" />
@@ -105,9 +105,9 @@ function MapPolygon() {
           className="absolute m-2 p-2 bg-white rounded-md"
           style={{ left: hoverInfo.x, top: hoverInfo.y }}
         >
-          <div>ID: {hoverInfo.feature.properties.ID}</div>
-          <div>Propinsi: {hoverInfo.feature.properties.Propinsi}</div>
-          <div>Users: {hoverInfo.feature.properties.users}</div>
+          <div>ID: {hoverInfo.feature?.properties.ID}</div>
+          <div>Propinsi: {hoverInfo.feature?.properties.Propinsi}</div>
+          <div>Users: {hoverInfo.feature?.properties.users}</div>
         </div>
       )}
     </Map>

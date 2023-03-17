@@ -3,7 +3,7 @@ import MarkerGreen from "assets/marker-green.png";
 import MarkerYellow from "assets/marker-yellow.png";
 import MarkerRed from "assets/marker-red.png";
 
-export const getMarker = (status: PointStatus | any) => {
+export const getMarker = (status: PointStatus | string) => {
   switch (status) {
     case PointStatus.done:
       return MarkerGreen;
