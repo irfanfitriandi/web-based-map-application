@@ -23,7 +23,7 @@ function Sidebar() {
       >
         <div className="flex flex-col text-white">
           <Link to="/">
-            <img className="w-20 mx-auto mb-8" src={Logo} alt="logo" />
+            <img className="w-16 mx-auto mb-8" src={Logo} alt="logo" />
           </Link>
           <Link
             className={`flex ${
